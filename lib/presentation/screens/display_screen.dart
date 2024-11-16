@@ -1,7 +1,6 @@
 import 'package:bw_machine_task2/data/models/weather_model.dart';
 import 'package:bw_machine_task2/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
@@ -26,7 +25,7 @@ class DisplayScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            kHeight20,
+            kHeight40,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -40,16 +39,8 @@ class DisplayScreen extends StatelessWidget {
                     Navigator.pop(context);
                   },
                 ),
-                // Centering the current time in the middle of the icons
                 Center(
-                  child: Text(
-                    currentTime,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.sp,
-                    ),
-                  ),
+                  child: Text(currentTime, style: q20W),
                 ),
                 PopupMenuButton<String>(
                   onSelected: (String value) {
@@ -75,46 +66,17 @@ class DisplayScreen extends StatelessWidget {
                 ),
               ],
             ),
-            kHeight10,
-            Text(
-              '${weather.cityName}',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 45.sp,
-              ),
-            ),
-            // Display the formatted date
-            Text(
-              formattedDate,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                fontSize: 20.sp,
-              ),
-            ),
-            Text(
-              '${weather.temperature.round()}°C',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 80.sp,
-              ),
-            ),
+            kHeight20,
+            Text(weather.cityName, style: q50W),
+            Text(formattedDate, style: q22W),
+            Text('${weather.temperature.round()}°C', style: q150W),
             Lottie.asset(
               getWeatherAnimation(
-                weather.mainCondition.toUpperCase(),
+                weather.mainCondition,
               ),
             ),
-            kHeight10,
-            Text(
-              '${weather.mainCondition}',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                fontSize: 30.sp,
-              ),
-            ),
+            kHeight20,
+            Text(weather.mainCondition, style: q40W),
           ],
         ),
       ),

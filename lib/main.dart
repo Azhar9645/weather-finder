@@ -1,6 +1,6 @@
 import 'package:bw_machine_task2/data/services/weather_service.dart';
 import 'package:bw_machine_task2/presentation/screens/home_screen.dart';
-import 'package:bw_machine_task2/presentation/viewmodel/weather_bloc/weather_bloc.dart';
+import 'package:bw_machine_task2/presentation/weather_bloc/weather_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
