@@ -1,8 +1,8 @@
 {
-    "search_city": "Search City Name",
-    "explore": "Explore",
-    "weather_details": "Weather Details",
-    "temperature": "Temperature",
-    "conditions": "Conditions"
-  }
-  
+  "home": "Home",
+  "select_language": "Select Language",
+  "temperature": "Temperature",
+  "main_condition": "Condition",
+  "date_format": "EEEE, MMMM dd, yyyy",
+  "time_format": "hh:mm a"
+}

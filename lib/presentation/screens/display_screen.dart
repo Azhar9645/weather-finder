@@ -1,24 +1,40 @@
 import 'package:bw_machine_task2/data/models/weather_model.dart';
+import 'package:bw_machine_task2/generated/l10n.dart';
 import 'package:bw_machine_task2/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
-class DisplayScreen extends StatelessWidget {
+class DisplayScreen extends StatefulWidget {
   final Weather weather;
 
   const DisplayScreen({super.key, required this.weather});
 
   @override
+  _DisplayScreenState createState() => _DisplayScreenState();
+}
+
+class _DisplayScreenState extends State<DisplayScreen> {
+  Locale _locale = const Locale('en');
+
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Convert the datetime string to a DateTime object
-    DateTime dateTime = DateTime.parse(weather.datetime);
+    DateTime dateTime = DateTime.parse(widget.weather.datetime);
+    String formattedDate =
+        DateFormat('EEEE, MMMM dd, yyyy', _locale.toString()).format(dateTime);
+    String currentTime =
+        DateFormat('hh:mm a', _locale.toString()).format(DateTime.now());
 
-    // Format the date as "Tuesday, January 10, 2024"
-    String formattedDate = DateFormat('EEEE, MMMM dd, yyyy').format(dateTime);
-
-    // Get the current time in a specific format
-    String currentTime = DateFormat('hh:mm a').format(DateTime.now());
+    // Localize the weather condition
+    String localizedCondition =
+        _getLocalizedWeatherCondition(widget.weather.mainCondition, context);
 
     return Scaffold(
       body: Padding(
@@ -30,11 +46,7 @@ class DisplayScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.white,
-                    size: 35,
-                  ),
+                  icon: const Icon(Icons.home, color: Colors.white, size: 35),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -44,17 +56,21 @@ class DisplayScreen extends StatelessWidget {
                 ),
                 PopupMenuButton<String>(
                   onSelected: (String value) {
-                    print('Selected Language: $value');
+                    // Change the language based on selected menu item
+                    Locale newLocale = value == 'English'
+                        ? const Locale('en')
+                        : const Locale('ar');
+                    _changeLanguage(newLocale);
                   },
                   itemBuilder: (BuildContext context) {
                     return [
-                      const PopupMenuItem<String>(
+                      PopupMenuItem<String>(
                         value: 'English',
-                        child: Text('English'),
+                        child: Text(S.of(context).english()),
                       ),
-                      const PopupMenuItem<String>(
+                      PopupMenuItem<String>(
                         value: 'Arabic',
-                        child: Text('Arabic'),
+                        child: Text(S.of(context).arabic()),
                       ),
                     ];
                   },
@@ -67,23 +83,44 @@ class DisplayScreen extends StatelessWidget {
               ],
             ),
             kHeight20,
-            Text(weather.cityName, style: q50W),
-            Text(formattedDate, style: q22W),
-            Text('${weather.temperature.round()}°C', style: q150W),
-            Lottie.asset(
-              getWeatherAnimation(
-                weather.mainCondition,
-              ),
+            // City Name
+            Text(
+              widget.weather.cityName, // No translation for city name needed
+              style: q50W,
             ),
+            Text(formattedDate, style: q22W),
+            Text('${widget.weather.temperature.round()}°C', style: q150W),
+            Lottie.asset(getWeatherAnimation(widget.weather.mainCondition)),
             kHeight20,
-            Text(weather.mainCondition, style: q40W),
+            // Weather Condition (Localized)
+            Text(
+              localizedCondition, // Localized condition text
+              style: q40W,
+            ),
           ],
         ),
       ),
     );
   }
+
+  String _getLocalizedWeatherCondition(String condition, BuildContext context) {
+    // Map weather conditions to localized strings
+    switch (condition.toLowerCase()) {
+      case 'clear':
+        return S.of(context).clear(); // Assuming you have this translation in your .arb files
+      case 'clouds':
+        return S.of(context).clouds();
+      case 'rain':
+        return S.of(context).rain();
+      case 'mist':
+        return S.of(context).mist();
+      default:
+        return S.of(context).unknown_condition();
+    }
+  }
 }
 
+// Helper function to get the appropriate animation for each weather condition
 String getWeatherAnimation(String mainCondition) {
   switch (mainCondition.toLowerCase()) {
     case 'clouds':

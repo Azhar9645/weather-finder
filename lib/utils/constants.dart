@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const String apiKey= 'f2ceb2555ce821f4ac50163f5af394c1';
@@ -15,37 +14,37 @@ const iconG =  Color(0xFF9E9E9E);
 
 // Text Styles with ScreenUtil
 final TextStyle q18B = GoogleFonts.quicksand(
-  fontSize: 18.sp,
+  fontSize: 18,
   fontWeight: FontWeight.bold,
   color: Colors.black,
 );
 
 final TextStyle q20W = GoogleFonts.quicksand(
-  fontSize: 20.sp,
+  fontSize: 20,
   fontWeight: FontWeight.w600,
   color: Colors.white,
 );
 
 final TextStyle q22W = GoogleFonts.quicksand(
-  fontSize: 22.sp,
+  fontSize: 22,
   fontWeight: FontWeight.bold,
   color: Colors.white,
 );
 
 final TextStyle q40W = GoogleFonts.quicksand(
-  fontSize: 40.sp,
+  fontSize: 40,
   fontWeight: FontWeight.w600,
   color: Colors.white,
 );
 
 final TextStyle q50W = GoogleFonts.quicksand(
-  fontSize: 50.sp,
+  fontSize: 50,
   fontWeight: FontWeight.bold,
   color: Colors.white,
 );
 
 final TextStyle q150W = GoogleFonts.quicksand(
-  fontSize: 150.sp,
+  fontSize: 150,
   fontWeight: FontWeight.bold,
   color: Colors.white,
 );

@@ -8,7 +8,8 @@ class WeatherService {
     try {
       final response = await http.get(
         Uri.parse(
-            'https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric'),
+          'https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric',
+        ),
       );
 
       if (response.statusCode == 200) {

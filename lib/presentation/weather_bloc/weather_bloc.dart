@@ -13,8 +13,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     on<FetchWeatherByCityName>((event, emit) async {
       emit(WeatherLoadingState());
       try {
-        final weather =
-            await weatherService.fetchWeatherByCityName(event.cityName);
+        // Assuming you have access to the current locale
+        String currentLang = 'en'; // Default language (or fetch from locale)
+
+        // If you use some way to change language in your app, update the `currentLang` here.
+        // You can get currentLang from your global settings or Locale.
+        
+        final weather = await weatherService.fetchWeatherByCityName(event.cityName);
         if (weather != null) {
           emit(WeatherSuccessState(weather));
           print('City: ${weather.cityName}');

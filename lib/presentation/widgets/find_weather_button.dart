@@ -1,6 +1,5 @@
 import 'package:bw_machine_task2/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FindWeatherButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -12,7 +11,7 @@ class FindWeatherButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 50.h,
+        height: 50,
         decoration: BoxDecoration(
           color: kGrey,
           borderRadius: kRadius12,

@@ -1,8 +1,8 @@
 {
-    "search_city": "ابحث عن اسم المدينة",
-    "explore": "استكشاف",
-    "weather_details": "تفاصيل الطقس",
-    "temperature": "درجة الحرارة",
-    "conditions": "الظروف"
-  }
-  
+  "home": "الصفحة الرئيسية",
+  "select_language": "اختر اللغة",
+  "temperature": "درجة الحرارة",
+  "main_condition": "الطقس",
+  "date_format": "EEEE, dd MMMM, yyyy",
+  "time_format": "hh:mm a"
+}

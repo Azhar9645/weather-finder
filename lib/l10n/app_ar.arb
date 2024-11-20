@@ -1,0 +1,10 @@
+{
+  "clouds": "غائم",
+  "mist": "ضباب",
+  "rain": "مطر",
+  "clear": "صافي",
+  "unknown_condition": "حالة غير معروفة",
+  "english": "إنجليزي",
+  "arabic": "عربي",
+  "cityName": "{cityName}"
+}

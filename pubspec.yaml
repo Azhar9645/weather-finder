@@ -35,17 +35,18 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
-  flutter_screenutil: ^5.9.3
   google_fonts: ^6.2.1
   http: ^1.2.2
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
-  meta: ^1.12.0
   lottie: ^3.1.3
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0
   fluttertoast: ^8.2.8
+  flutter_localization: ^0.2.2
+  intl_utils: ^2.8.7
+  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -57,12 +58,16 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  test: ^1.24.0
+  mockito: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -74,7 +79,19 @@ flutter:
     - assets/background/
     - assets/lottie/splash/
     - assets/lottie/condiotions/
+    - assets/lang/ar.json
+    - assets/lang/en.json
+    - lib/l10n/
   #   - images/a_dot_ham.jpeg
+
+flutter_intl:
+  enabled: true
+  arb_dir: lib/l10n
+  template_ar_file: lib/l10n/app_en.arb  # Ensure this is the correct file
+  output_class: S
+  output_localization_file: S.dart
+  output_dir: lib/generated
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

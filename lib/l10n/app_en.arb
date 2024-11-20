@@ -1,0 +1,10 @@
+{
+  "clouds": "Cloudy",
+  "mist": "Mist",
+  "rain": "Rain",
+  "clear": "Clear",
+  "unknown_condition": "Unknown Condition",
+  "english": "English",
+  "arabic": "Arabic",
+  "cityName": "{cityName}"
+}

@@ -1,6 +1,5 @@
 import 'package:bw_machine_task2/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
@@ -10,7 +9,7 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60.h,
+      height: 60,
       child: CupertinoTextField(
         controller: controller,
         placeholder: 'Search City Name',
@@ -32,7 +31,7 @@ class SearchField extends StatelessWidget {
           ),
         ),
         style: q18B,
-        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
       ),
     );
   }
