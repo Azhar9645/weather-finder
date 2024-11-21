@@ -6,8 +6,10 @@ A Flutter application that fetches and displays weather data for any city using 
 ---
 ## App Screenshot
 
-![App Screenshot](./assets/images/Screenshot_1732167039.png) ![App Screenshot](./assets/images/Screenshot_1732167052.png)
-
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+  <img src="./assets/images/Screenshot_1732167039.png" alt="App Screenshot 1" width="300" />
+  <img src="./assets/images/Screenshot_1732167052.png" alt="App Screenshot 2" width="300" />
+</div>
 
 
 ## 🚀 Features
