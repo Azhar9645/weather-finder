@@ -46,7 +46,7 @@ flutter pub get
 2. Open the file `lib/utils/constants.dart`.
 3. Add your API key:
    ```dart
-   const String apiKey = 'f2ceb2555ce821f4ac50163f5af394c1';
+   const String apiKey = 'YOUR_API_KEY';
    ```
 
 ### Run the Application
