@@ -1,5 +1,6 @@
 import 'package:bw_machine_task2/data/models/weather_model.dart';
 import 'package:bw_machine_task2/generated/l10n.dart';
+import 'package:bw_machine_task2/presentation/widgets/display_header.dart';
 import 'package:bw_machine_task2/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +22,6 @@ class _DisplayScreenState extends State<DisplayScreen> {
     setState(() {
       _locale = locale;
     });
-
   }
 
   @override
@@ -32,69 +32,28 @@ class _DisplayScreenState extends State<DisplayScreen> {
     String currentTime =
         DateFormat('hh:mm a', _locale.toString()).format(DateTime.now());
 
-    // Localize the weather condition
-    String localizedCondition =
-        _getLocalizedWeatherCondition(widget.weather.mainCondition, context);
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             kHeight40,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.home, color: Colors.white, size: 35),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                Center(
-                  child: Text(currentTime, style: q20W),
-                ),
-                PopupMenuButton<String>(
-                  onSelected: (String value) {
-                    // Change the language based on selected menu item
-                    Locale newLocale = value == 'English'
-                        ? const Locale('en')
-                        : const Locale('ar');
-                    _changeLanguage(newLocale);
-                  },
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      PopupMenuItem<String>(
-                        value: 'English',
-                        child: Text(S.of(context).english()),
-                      ),
-                      PopupMenuItem<String>(
-                        value: 'Arabic',
-                        child: Text(S.of(context).arabic()),
-                      ),
-                    ];
-                  },
-                  icon: const Icon(
-                    Icons.language,
-                    color: Colors.white,
-                    size: 35,
-                  ),
-                ),
-              ],
+            /// Builds the header with home, current time, and language selector.
+            DisplayHeader(
+              currentTime: currentTime,
+              onLanguageChange: _changeLanguage,
             ),
             kHeight20,
-            // City Name
             Text(
-              widget.weather.cityName, // No translation for city name needed
+              widget.weather.cityName,
               style: q50W,
             ),
             Text(formattedDate, style: q22W),
             Text('${widget.weather.temperature.round()}°C', style: q150W),
             Lottie.asset(getWeatherAnimation(widget.weather.mainCondition)),
             kHeight20,
-            // Weather Condition (Localized)
             Text(
-              localizedCondition, // Localized condition text
+              widget.weather.mainCondition,
               style: q40W,
             ),
           ],
@@ -103,42 +62,26 @@ class _DisplayScreenState extends State<DisplayScreen> {
     );
   }
 
-  String _getLocalizedWeatherCondition(String condition, BuildContext context) {
-    // Map weather conditions to localized strings
-    switch (condition.toLowerCase()) {
-      case 'clear':
-        return S.of(context).clear(); // Assuming you have this translation in your .arb files
-      case 'clouds':
-        return S.of(context).clouds();
-      case 'rain':
-        return S.of(context).rain();
-      case 'mist':
-        return S.of(context).mist();
-      default:
-        return S.of(context).unknown_condition();
-    }
-  }
-}
-
 // Helper function to get the appropriate animation for each weather condition
-String getWeatherAnimation(String mainCondition) {
-  switch (mainCondition.toLowerCase()) {
-    case 'clouds':
-    case 'mist':
-    case 'smoke':
-    case 'haze':
-    case 'dust':
-    case 'fog':
-      return 'assets/lottie/condiotions/windy.json';
-    case 'rain':
-    case 'drizzle':
-    case 'shower rain':
-      return 'assets/lottie/condiotions/sun with rain.json';
-    case 'thunderstorm':
-      return 'assets/lottie/condiotions/thunder.json';
-    case 'clear':
-      return 'assets/lottie/condiotions/sunny.json';
-    default:
-      return 'assets/lottie/condiotions/sunny.json';
+  String getWeatherAnimation(String mainCondition) {
+    switch (mainCondition.toLowerCase()) {
+      case 'clouds':
+      case 'mist':
+      case 'smoke':
+      case 'haze':
+      case 'dust':
+      case 'fog':
+        return 'assets/lottie/condiotions/windy.json';
+      case 'rain':
+      case 'drizzle':
+      case 'shower rain':
+        return 'assets/lottie/condiotions/sun with rain.json';
+      case 'thunderstorm':
+        return 'assets/lottie/condiotions/thunder.json';
+      case 'clear':
+        return 'assets/lottie/condiotions/sunny.json';
+      default:
+        return 'assets/lottie/condiotions/sunny.json';
+    }
   }
 }
