@@ -108,4 +108,4 @@ If you have any questions or feedback, feel free to reach out:
 
 ---
 
-Replace placeholders like `<repository_url>` and `YOUR_API_KEY` with your project-specific details. Ensure all instructions align with how your app is set up, and if your project has extra steps (e.g., environment variables or build configurations), include them too.
+Replace placeholders like `<repository_url>` and `YOUR_API_KEY` with your project-specific details. Ensure all instructions align with how your app is set up.
