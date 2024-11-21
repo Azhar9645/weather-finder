@@ -81,6 +81,7 @@ flutter:
     - assets/lottie/condiotions/
     - assets/lang/ar.json
     - assets/lang/en.json
+    - assets/screenshots/
     - lib/l10n/
   #   - images/a_dot_ham.jpeg
 

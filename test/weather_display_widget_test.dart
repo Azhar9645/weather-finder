@@ -15,7 +15,6 @@ void main() {
 
   testWidgets('DisplayScreen renders correctly with weather data',
       (WidgetTester tester) async {
-    // Initialize ScreenUtil with test parameters
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: const [
