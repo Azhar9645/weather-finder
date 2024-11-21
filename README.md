@@ -4,6 +4,11 @@
 A Flutter application that fetches and displays weather data for any city using the OpenWeather API. 
 
 ---
+## App Screenshot
+
+![App Screenshot](./assets/screenshots/Screenshot_1732167039.png)
+![App Screenshot](./assets/screenshots/Screenshot_1732167052.png)
+
 
 ## 🚀 Features
 - View current weather conditions.
