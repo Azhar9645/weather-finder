@@ -7,7 +7,7 @@ A Flutter application that fetches and displays weather data for any city using 
 
 ## 🚀 Features
 - View current weather conditions.
-- Displays temperature, sunrise, and sunset times.
+- Displays temperature, current date, time, and cityname.
 - Animated weather conditions using **Lottie**.
 - Supports multiple locales for a personalized experience.
 
